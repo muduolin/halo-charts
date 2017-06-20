@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'echo "hello world"'
+        git 'https://github.com/muduolin/halo-charts.git'
       }
     }
   }
