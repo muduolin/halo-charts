@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
+    stage('') {
       steps {
-        git 'https://github.com/muduolin/halo-charts.git'
+        sh 'echo "hello"'
       }
     }
   }
