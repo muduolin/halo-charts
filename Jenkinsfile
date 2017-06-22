@@ -1,5 +1,6 @@
 pipeline {
-node {
+agent any {
+  stages {
   stage('SonarQube analysis') {
     // requires SonarQube Scanner 2.8+
     def scannerHome = tool 'SonarQube Scanner 2.8';
@@ -13,6 +14,7 @@ node {
         error "Pipeline aborted due to quality gate failure: ${qg.status}"
       }
     }
+  }
   }
 }
 }
