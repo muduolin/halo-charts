@@ -2,12 +2,11 @@ pipeline {
   agent any
   stages {
     stage('Test') {
-      tools {
-        'SonarQube Scanner 2.8'
-      }
-      steps {
+      script {
+        def scannerHome = tool 'SonarQube Scanner 2.8';
+        echo "${scannerHome}"
         withSonarQubeEnv('Sonarqube Server 6.4') {
-          sh "sonar-scanner -Dsonar.projectKey=halo-charts -Dsonar.projectName=halo-charts -Dsonar.sources=."
+          sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=halo-charts -Dsonar.projectName=halo-charts -Dsonar.sources=."
         }
       }
     }
