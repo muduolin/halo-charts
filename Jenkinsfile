@@ -6,6 +6,12 @@ node {
     withSonarQubeEnv('Sonarqube Server 6.4') {
       sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=halo-charts -Dsonar.projectName=halo-charts -Dsonar.sources=."
     }
+    timeout(time: 1, unit: 'HOURS') { 
+      def qg = waitForQualityGate() 
+      if (qg.status != 'OK') {
+        error "Pipeline aborted due to quality gate failure: ${qg.status}"
+      }
+    }
   }
 }
 //stage("SonarQube Quality Gate") { 
