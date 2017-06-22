@@ -1,9 +1,14 @@
 pipeline {
   agent any
   stages {
-    stage ('Example') {
+    stage('Example') {
       steps {
-        echo "hello"
+        echo 'hello'
+      }
+    }
+    stage('Test') {
+      steps {
+        waitForQualityGate()
       }
     }
   }
