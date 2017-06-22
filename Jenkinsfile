@@ -1,3 +1,4 @@
+pipeline {
 node {
   stage('SonarQube analysis') {
     // requires SonarQube Scanner 2.8+
@@ -13,6 +14,7 @@ node {
       }
     }
   }
+}
 }
 //stage("SonarQube Quality Gate") { 
 //  timeout(time: 1, unit: 'HOURS') { 
