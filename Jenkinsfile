@@ -1,6 +1,4 @@
-pipeline {
-agent any {
-  stages {
+node {
   stage('SonarQube analysis') {
     // requires SonarQube Scanner 2.8+
     def scannerHome = tool 'SonarQube Scanner 2.8';
@@ -15,8 +13,6 @@ agent any {
       }
     }
   }
-  }
-}
 }
 //stage("SonarQube Quality Gate") { 
 //  timeout(time: 1, unit: 'HOURS') { 
